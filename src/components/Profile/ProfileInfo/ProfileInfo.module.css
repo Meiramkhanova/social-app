@@ -2,3 +2,9 @@
 .descriptionBlock{
 	padding: 10px;
 }
+
+.image_size{
+	width: 400px;
+	border-radius: 20px;
+	/* height: 400px; */
+}

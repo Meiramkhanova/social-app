@@ -5,3 +5,14 @@
 .posts{
 	margin-top: 10px;
 }
+
+.button{
+	background-color: gold;
+	border-width: 3px;
+	border-width: 0;
+	width: 120px;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fdf8e1;
+	
+}

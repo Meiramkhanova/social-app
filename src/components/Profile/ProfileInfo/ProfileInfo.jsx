@@ -5,7 +5,7 @@ const ProfileInfo = () =>{
 	return (
 			<div>
 					<div>
-						<img src='https://thumbs.dreamstime.com/b/fond-d-arbre-de-l-espace-57524764.jpg'/>
+				<img className={s.image_size} src="https://i0.wp.com/madeofstill.com/wp-content/uploads/2022/04/signs-of-anointed-person.jpg?fit=1000%2C667&ssl=1" alt=''/>
 					</div>
 					<div className={s.descriptionBlock}>
 						ava + desc

@@ -4,7 +4,7 @@ import classes from './Post.module.css';
 const Post = (props) =>{
 	return(
 		<div className={classes.item}>
-			<img src="https://www.giantbomb.com/a/uploads/scale_medium/3/33873/1700999-naruto.png" alt="" />
+			<img src="https://i0.wp.com/madeofstill.com/wp-content/uploads/2022/04/signs-of-anointed-person.jpg?fit=1000%2C667&ssl=1" alt="" />
 			{props.message} {props.message2}
 			<div>
 				<span >Like {props.likesAmount}</span>
