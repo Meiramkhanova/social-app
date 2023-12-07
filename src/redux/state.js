@@ -1,5 +1,8 @@
 const add_post = 'add-post';
-const update_new_post_text = 'update-new-post-text'
+const update_new_post_text = 'update-new-post-text';
+
+const update_new_message_body = 'update_new_message_body'
+const send_message = 'send_message'
 
 let store = {
 	_state: {
@@ -25,8 +28,6 @@ let store = {
 				],
 			newPostText: 'printsmth'
 		},
-
-
 		dialogsPage: {
 			messages:
 				[
@@ -83,6 +84,7 @@ let store = {
 						name: 'Samat'
 					},
 				],
+			newMessageBody: "",
 		},
 		siteBar: {
 			friends:
@@ -108,8 +110,8 @@ let store = {
 	getState() {
 		return this._state
 	},
-	subscribe(observer){
-	this._rerenderEntireTree = observer;  // наблюдатель
+	subscribe(observer) {
+		this._rerenderEntireTree = observer;  // наблюдатель
 	},
 	dispatch(action) { //type : "add-post"
 		if (action.type === add_post) {
@@ -117,14 +119,25 @@ let store = {
 				id: 5,
 				message: this._state.profilePage.newPostText,
 				likesAmount: 1
-		};
+			};
 
-		this._state.profilePage.posts.push(newPost);
-		this._state.profilePage.newPostText = '';
-		this._callSubscriber(this._state);
+			this._state.profilePage.posts.push(newPost);
+			this._state.profilePage.newPostText = '';
+			this._callSubscriber(this._state);
 		}
 		else if (action.type === update_new_post_text) {
 			this._state.profilePage.newPostText = action.newText;
+			this._callSubscriber(this._state);
+		}
+		else if (action.type === update_new_message_body) {
+			this._state.dialogsPage.newMessageBody = action.body;
+
+			this._callSubscriber(this._state)
+		}
+		else if(action.type === send_message){
+			let body = this._state.dialogsPage.newMessageBody;
+			this._state.dialogsPage.newMessageBody = '';
+			this._state.dialogsPage.messages.push({id:6, message:body});
 			this._callSubscriber(this._state);
 		}
 	}
@@ -132,9 +145,18 @@ let store = {
 
 export const addPostActionCreator = () => ({type: add_post})
 
-export const updateNewPostTextActionCreator = (text) =>({ type: update_new_post_text, newText: text })
+export const updateNewPostTextActionCreator = (text) => ({ type: update_new_post_text, newText: text })
 
 
+export const sendMessageCreator = () => (
+	{ type: send_message }
+)
+
+export const updateNewMessageBodyCreator = (body) => ({
+	type: update_new_message_body,
+	body: body
+}
+)
 export default store;
 
 window.store = store;
