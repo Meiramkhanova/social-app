@@ -111,7 +111,7 @@ let store = {
 		return this._state
 	},
 	subscribe(observer) {
-		this._rerenderEntireTree = observer;  // наблюдатель
+		this._callSubscriber = observer;  // наблюдатель
 	},
 	dispatch(action) { //type : "add-post"
 		if (action.type === add_post) {
