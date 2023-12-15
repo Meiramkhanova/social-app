@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Users from './components/Users/Users';
 
 const App = (props) => {
 	
@@ -12,14 +13,12 @@ const App = (props) => {
 		<BrowserRouter>
 			<div className='app-wrapper'>
 				<Header/>
-				<Navbar state={props.state.siteBar.friends}/>
+				<Navbar/>
 				<div className='app-wrapper-content'>
 					<Routes>
-						<Route path="/profile" element={<Profile store={props.store} />} />
-						<Route path='/dialogs/*' element={<DialogsContainer store={props.store} />}/>
-						<Route path='/news'/>
-						<Route path='/music'/>
-						<Route path='/settings'/>
+						<Route path="/profile" element={<Profile/>} />
+						<Route path='/dialogs/*' element={<DialogsContainer/>}/>
+						<Route path='/users/' element={<Users/>}/>
 					</Routes>
 				</div>
 			</div>

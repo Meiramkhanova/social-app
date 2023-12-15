@@ -23,7 +23,7 @@ const Navbar = (props) =>{
 					<NavLink to='/settings' className={({isActive}) =>(isActive ? s.active : s.item)}>Settings</NavLink>
 				</div>
 
-				<SiteBar names={props.state}/>
+				{/* <SiteBar names={props.state}/> */}
 			</nav>
 	)
 }
