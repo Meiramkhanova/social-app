@@ -1,54 +1,31 @@
 import React from "react";
 import styles from "./users.module.css";
+import axios from "axios";
+import userPhoto from "../../assets/image.png";
 
 let Users = (props) => {
-  if (props.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        photoUrl:
-          "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        followed: true,
-        fullName: "Adina",
-        status: "I am looking for a job right now",
-        location: { city: "Ayagoz", country: "Kazakhstan" },
-      },
-      {
-        id: 2,
-        photoUrl:
-          "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        followed: false,
-        fullName: "Alina",
-        status: "Learning Java",
-        location: { city: "Almaty", country: "Kazakhstan" },
-      },
-      {
-        id: 3,
-        photoUrl:
-          "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        followed: false,
-        fullName: "Marinette",
-        status: "Nice weekends!",
-        location: { city: "Paris", country: "France" },
-      },
-      {
-        id: 4,
-        photoUrl:
-          "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
-        followed: true,
-        fullName: "Andrew",
-        status: "I am free too help with VideoDesign",
-        location: { city: "Moscow", country: "Russia" },
-      },
-    ]);
-  }
+  let getUsers = () => {
+    if (props.users.length === 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          props.setUsers(response.data.items);
+        });
+    }
+  };
+
   return (
     <div>
+      <button onClick={getUsers}>Get Users</button>
       {props.users.map((u) => (
         <div key={u.id}>
           <span>
             <div>
-              <img src={u.photoUrl} className={styles.userPhoto} />
+              <img
+                src={u.photos.small !== null ? u.photos.small : userPhoto}
+                alt="personPhoto"
+                className={styles.userPhoto}
+              />
             </div>
             <div>
               {u.followed ? (
@@ -72,12 +49,12 @@ let Users = (props) => {
           </span>
           <span>
             <span>
-              <div>{u.fullName}</div>
+              <div>{u.name}</div>
               <div>{u.status}</div>
             </span>
             <span>
-              <div>{u.location.country}</div>
-              <div>{u.location.city}</div>
+              <div>{"u.location.country"}</div>
+              <div>{"u.location.city"}</div>
             </span>
           </span>
         </div>

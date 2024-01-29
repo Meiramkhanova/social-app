@@ -5,14 +5,14 @@ import sitebarReducer from "./sitebar-reducer";
 import usersReducer from "./users-reducer";
 
 let reducers = combineReducers({
-	profilePage: profileReducer,
-	dialogsPage: dialogsReducer,
-	siteBar: sitebarReducer,
-	usersPage : usersReducer,
-})
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  siteBar: sitebarReducer,
+  usersPage: usersReducer,
+});
 
 let store = createStore(reducers);
 
-window.store = store
+window.store = store;
 
-export default store
+export default store;
