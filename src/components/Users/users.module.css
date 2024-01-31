@@ -3,6 +3,9 @@
 	height: 120px;
 }
 
-*{
-	color: white	;
+
+
+.selectedPage{
+	font-weight: bold;
+	color: yellow;
 }
